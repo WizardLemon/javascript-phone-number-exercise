@@ -1,0 +1,24 @@
+{
+  "name": "javascript-fundamentals-temperatures",
+  "description": "Vega IT - JavaScript Fundamentals",
+  "author": "Janko Vrbnjak, Nenad Perčić",
+  "scripts": {
+    "test": "npm run spec:basic",
+    "test:style": "npm run spec:basic && npm run spec:functional && npm run lint",
+    "test:performance": "npm run spec:performance",
+    "spec:basic": "npm run mocha:babel ./tests/basic.test.js",
+    "spec:functional": "npm run mocha:babel ./tests/functional.test.js",
+    "spec:performance": "npm run mocha:babel ./tests/performance.test.js",
+    "spec:benchmark": "npm run mocha:babel ./tests/benchmark.spec.js",
+    "lint": "eslint --color ./src/index.js",
+    "mocha:babel": "mocha --require @babel/register"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/register": "^7.15.3",
+    "chai": "^4.2.0",
+    "eslint": "^7.31.0",
+    "mocha": "^6.1.4"
+  }
+}

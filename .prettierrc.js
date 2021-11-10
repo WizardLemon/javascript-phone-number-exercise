@@ -1,0 +1,16 @@
+module.exports = {
+  arrowParens: "always",
+  bracketSpacing: true,
+  endOfLine: "lf",
+  insertPragma: false,
+  printWidth: 120,
+  proseWrap: "preserve",
+  quoteProps: "as-needed",
+  requirePragma: false,
+  semi: true,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "es5",
+  useTabs: false,
+  parser: "babel",
+};

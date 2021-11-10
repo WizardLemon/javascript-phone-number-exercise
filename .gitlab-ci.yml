@@ -1,0 +1,255 @@
+image: node:latest
+
+stages:
+  - hold
+  - benchmark
+  - results
+
+hold_benchmark_run:
+  stage: hold
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - echo "Starting benchmark..."
+    - mkdir benchmark
+  when: manual
+  except:
+    - /^team-.*$/i
+  allow_failure: false
+
+benchmark_team_1:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-1
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-1.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_2:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-2
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-2.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_3:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-3
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-3.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_4:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-4
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-4.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_5:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-5
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-5.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_6:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-6
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-6.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_7:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-7
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-7.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_8:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-8
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-8.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_9:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-9
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-9.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_10:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-10
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-10.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_11:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-11
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-11.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_12:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-12
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-12.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_13:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-13
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-13.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_14:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-14
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-14.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_team_15:
+  stage: benchmark
+  needs: ["hold_benchmark_run"]
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - git fetch
+    - git checkout team-15
+    - npm ci
+    - npm run test:performance | tee benchmark/benchmark-15.log
+  allow_failure: true
+  except:
+    - /^team-.*$/i
+
+benchmark_results:
+  stage: results
+  artifacts:
+    paths:
+      - benchmark
+  script:
+    - npm ci
+    - npm run spec:benchmark | tee benchmark/benchmark-results.log
+  except:
+    - /^team-.*$/i
